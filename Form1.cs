@@ -272,7 +272,7 @@ namespace SegundoDIP
 
             Console.WriteLine(videoDevices.Count);
 
-            videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
+            videoSource = new VideoCaptureDevice(videoDevices[videoDevices.Count - 1].MonikerString);
             videoSource.NewFrame += new NewFrameEventHandler(VideoSource_NewFrame);
             videoSource.Start();
 

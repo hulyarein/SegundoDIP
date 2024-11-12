@@ -70,7 +70,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1257, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1257, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -87,14 +87,14 @@
             // openBackgroundToolStripMenuItem
             // 
             this.openBackgroundToolStripMenuItem.Name = "openBackgroundToolStripMenuItem";
-            this.openBackgroundToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openBackgroundToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.openBackgroundToolStripMenuItem.Text = "Open Background";
             this.openBackgroundToolStripMenuItem.Click += new System.EventHandler(this.openBackgroundToolStripMenuItem_Click);
             // 
             // openCameraToolStripMenuItem
             // 
             this.openCameraToolStripMenuItem.Name = "openCameraToolStripMenuItem";
-            this.openCameraToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openCameraToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.openCameraToolStripMenuItem.Text = "Open Camera";
             this.openCameraToolStripMenuItem.Click += new System.EventHandler(this.openCameraToolStripMenuItem_Click);
             // 
@@ -102,7 +102,7 @@
             // 
             this.openForegroundToolStripMenuItem.Enabled = false;
             this.openForegroundToolStripMenuItem.Name = "openForegroundToolStripMenuItem";
-            this.openForegroundToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openForegroundToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.openForegroundToolStripMenuItem.Text = "Open Foreground";
             this.openForegroundToolStripMenuItem.Click += new System.EventHandler(this.openForegroundToolStripMenuItem_Click);
             // 
@@ -186,7 +186,14 @@
             "Greyscale",
             "Inversion",
             "Sepia",
-            "Histogram"});
+            "Histogram",
+            "Smoothing",
+            "Sharpen",
+            "Gaussian Blur",
+            "Mean Removal",
+            "Emboss Laplacian",
+            "Edge Enhance",
+            "Edge Detect"});
             this.filterSelect.Location = new System.Drawing.Point(542, 183);
             this.filterSelect.Name = "filterSelect";
             this.filterSelect.Size = new System.Drawing.Size(133, 24);
@@ -283,7 +290,14 @@
             "Greyscale",
             "Inversion",
             "Sepia",
-            "Histogram"});
+            "Histogram",
+            "Smoothing",
+            "Sharpen",
+            "Gaussian Blur",
+            "Mean Removal",
+            "Emboss Laplacian",
+            "Edge Enhance",
+            "Edge Detect"});
             this.filterSubtractedSelect.Location = new System.Drawing.Point(279, 458);
             this.filterSubtractedSelect.Name = "filterSubtractedSelect";
             this.filterSubtractedSelect.Size = new System.Drawing.Size(133, 24);

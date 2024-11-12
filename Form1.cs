@@ -19,12 +19,13 @@ namespace SegundoDIP
     public partial class Form1 : Form
     {
         Bitmap loaded, processed, foreground, subtracted, subtractedOutput;
-
+        BitmapFilter bitmapFilter;
         private FilterInfoCollection videoDevices; // Collection of camera devices
         private VideoCaptureDevice videoSource; // Selected camera device
         public Form1()
         {
             InitializeComponent();
+            bitmapFilter = new BitmapFilter();
             filterSelect.SelectedIndex = 0;
             filterSubtractedSelect.SelectedIndex = 0;
         }
@@ -63,14 +64,9 @@ namespace SegundoDIP
 
             Bitmap temp = null;
 
-            if (videoSource != null && videoSource.IsRunning)
-            {
-                temp = (Bitmap)loaded.Clone();
-            }
-            else
-            {
-                temp = loaded;
-            }
+
+            temp = (Bitmap)loaded.Clone();
+
 
             switch (filterSelect.SelectedItem)
             {
@@ -89,7 +85,34 @@ namespace SegundoDIP
                 case "Histogram":
                     DIPHelper.GenerateHistogram(ref temp, ref processed);
                     break;
-
+                case "Smoothing":
+                    BitmapFilter.Smooth(temp,1);
+                    processed = temp;
+                    break;
+                case "Gaussian Blur":
+                    BitmapFilter.GaussianBlur(temp, 4);
+                    processed = temp;
+                    break;
+                case "Sharpen":
+                    BitmapFilter.Sharpen(temp, 11);
+                    processed = temp;
+                    break;
+                case "Mean Removal":
+                    BitmapFilter.MeanRemoval(temp,9);
+                    processed = temp;
+                    break;
+                case "Emboss Laplacian":
+                    BitmapFilter.EmbossLaplacian(temp);
+                    processed = temp;
+                    break;
+                case "Edge Enhance":
+                    BitmapFilter.EdgeEnhance(temp, (byte)1);
+                    processed = temp;
+                    break;
+                case "Edge Detect":
+                    BitmapFilter.EdgeDetectDifference(temp, (byte)1);
+                    processed = temp;
+                    break;
             }
 
             outputFilterBox.Image = processed;
@@ -179,16 +202,19 @@ namespace SegundoDIP
         private void chooseFilterSubtractedButton_Click(object sender, EventArgs e)
         {
             Bitmap temp = null;
-            if (videoSource != null && videoSource.IsRunning)
-            {
-                temp = (Bitmap)loaded.Clone();
+            //if (videoSource != null && videoSource.IsRunning)
+            //{
+            //    temp = (Bitmap)loaded.Clone();
 
 
-            }
-            else
-            {
-                temp = loaded;
-            }
+            //}
+            //else
+            //{
+            //    temp = loaded;
+            //}
+
+            temp = (Bitmap)subtracted.Clone(); ;
+          
 
             switch (filterSubtractedSelect.SelectedItem)
             {
@@ -206,6 +232,34 @@ namespace SegundoDIP
                     break;
                 case "Histogram":
                     DIPHelper.GenerateHistogram(ref subtracted, ref subtractedOutput);
+                    break;
+                case "Smoothing":
+                    BitmapFilter.Smooth(temp, 1);
+                    subtractedOutput = temp;
+                    break;
+                case "Gaussian Blur":
+                    BitmapFilter.GaussianBlur(temp, 4);
+                    subtractedOutput = temp;
+                    break;
+                case "Sharpen":
+                    BitmapFilter.Sharpen(temp, 11);
+                    subtractedOutput = temp;
+                    break;
+                case "Mean Removal":
+                    BitmapFilter.MeanRemoval(temp, 9);
+                    subtractedOutput = temp;
+                    break;
+                case "Emboss Laplacian":
+                    BitmapFilter.EmbossLaplacian(temp);
+                    subtractedOutput = temp;
+                    break;
+                case "Edge Enhance":
+                    BitmapFilter.EdgeEnhance(temp, (byte)1);
+                    subtractedOutput = temp;
+                    break;
+                case "Edge Detect":
+                    BitmapFilter.EdgeDetectDifference(temp, (byte)1);
+                    subtractedOutput = temp;
                     break;
 
             }
